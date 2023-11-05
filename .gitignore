@@ -1,2 +1,4 @@
+/build
 *.debug
-simple
+
+/c/dl_demo/generate_tx/target

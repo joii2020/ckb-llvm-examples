@@ -1,0 +1,63 @@
+{
+  "mock_info": {
+    "inputs": [
+      {
+        "output": {
+          "capacity": "0x10000000",
+          "lock": {
+            "args": "0x",
+            "code_hash": "0x{{ ref_type dl_demo }}",
+            "hash_type": "type"
+          },
+          "type": null
+        },
+        "data": "0x"
+      }
+    ],
+    "cell_deps": [
+      {
+        "output": {
+          "capacity": "0x10000000",
+          "lock": {
+            "args": "0x00AE9DF3447C404A645BC48BEA4B7643B95AC5C3AE",
+            "code_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "hash_type": "data1"
+          },
+          "type": "{{ def_type dl }}"
+        },
+        "data": "0x{{ data ../../../../build/dl }}"
+      },
+      {
+        "output": {
+          "capacity": "0x10000000",
+          "lock": {
+            "args": "0x00AE9DF3447C404A645BC48BEA4B7643B95AC5C3AE",
+            "code_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "hash_type": "data1"
+          },
+          "type": "{{ def_type dl_demo }}"
+        },
+        "data": "0x{{ data ../../../../build/dl_demo }}"
+      }
+    ],
+    "header_deps": []
+  },
+  "tx": {
+    "outputs": [
+      {
+        "capacity": "0x0",
+        "lock": {
+          "args": "0x",
+          "code_hash": "0x{{ ref_type dl_demo }}",
+          "hash_type": "data1"
+        }
+      }
+    ],
+    "witnesses": [
+      "0x"
+    ],
+    "outputs_data": [
+      "0x"
+    ]
+  }
+}
