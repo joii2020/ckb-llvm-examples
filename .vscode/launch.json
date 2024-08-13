@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "name": "(lldb) 启动",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/simple",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "miDebuggerServerAddress": "127.0.0.1:8000",
+        },
+        {
+            "name": "LLDB",
+            "type": "lldb",
+            "request": "custom",
+            "initCommands": [
+                "target create build/simple.debug",
+                "gdb-remote 8000",
+            ],
+        },
+        {
+            "name": "GDB",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${workspaceRoot}/build/simple.debug",
+            "cwd": "${workspaceRoot}",
+            "remote": true,
+            "target": "127.0.0.1:8000",
+        },
+    ]
+}

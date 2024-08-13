@@ -4,7 +4,7 @@ OBJCOPY := llvm-objcopy
 
 CFLAGS := \
 		--target=riscv64 -march=rv64imc_zba_zbb_zbc_zbs \
-		-O3 -g -Wall -Werror \
+		-O0 -g -Wall -Werror \
 		-DCKB_NO_ENTRY_GP \
 		-fno-builtin-printf -fno-builtin-memcmp \
 		-nostdinc -nostdlib \
@@ -18,10 +18,14 @@ CFLAGS := \
 LDFLAGS := -Wl,-static -Wl,--gc-sections
 
 all: \
+	build \
+	build/dl_demo_tx
+
+build: \
 	build/simple \
 	build/dl \
 	build/dl_demo \
-	build/dl_demo_tx
+	build/simple.native
 
 run-all: run-simple
 
@@ -30,6 +34,10 @@ build/simple: c/simple.c
 	$(CC) $(CFLAGS) -o $@ $<
 	cp $@ $@.debug
 	$(OBJCOPY) --strip-debug --strip-all $@
+
+build/simple.native: c/simple.c
+	mkdir -p build
+	$(CC) -DBUILD_NATIVE -O0 -g -o $@ $<
 
 run-simple: build/simple
 	ckb-debugger --bin build/simple
