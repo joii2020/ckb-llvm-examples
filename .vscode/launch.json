@@ -31,5 +31,18 @@
             "remote": true,
             "target": "127.0.0.1:8000",
         },
+        {
+            "name": "Dbg with ckb-debugger",
+            "type": "lldb",
+            "request": "custom",
+            "targetCreateCommands": [
+                "target create rust/build/release/ckb-c1.debug",
+            ],
+            "processCreateCommands": [
+                "gdb-remote 127.0.0.1:8000"
+            ],
+            "preLaunchTask": "StartDbg-Rust",
+            "postDebugTask": "StopCkbDebugger",
+        },
     ]
 }

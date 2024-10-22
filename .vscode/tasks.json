@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "lldb start",
+            "type": "shell",
+            "command": "lldb simple -s lldb-dbg-cmd.txt",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "StartDbg-Rust",
+            "isBackground": true,
+            "type": "process",
+            "command": "ckb-debugger",
+            "args": [
+                "--bin=rust/build/release/ckb-c1.debug",
+                "--mode=gdb",
+                "--gdb-listen=127.0.0.1:8000"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+        },
+        {
+            "label": "StopCkbDebugger",
+            "type": "shell",
+            "command": "killall ckb-debugger || true"
+        },
+    ]
+}
