@@ -44,5 +44,16 @@
             "preLaunchTask": "StartDbg-Rust",
             "postDebugTask": "StopCkbDebugger",
         },
+        {
+            "name": "Dbg With native-debug",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "rust/build/release/ckb-c1.debug",
+            "cwd": "${workspaceRoot}",
+            "remote": true,
+            "target": "127.0.0.1:8000",
+            "preLaunchTask": "StartDbg-Rust",
+            "postDebugTask": "StopCkbDebugger",
+        },
     ]
 }
