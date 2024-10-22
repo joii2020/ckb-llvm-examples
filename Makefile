@@ -25,7 +25,8 @@ build: \
 	build/simple \
 	build/dl \
 	build/dl_demo \
-	build/simple.native
+	build/simple.native \
+	build/rust
 
 run-all: run-simple
 
@@ -57,8 +58,12 @@ build/dl_demo: c/dl_demo/dl_demo.c
 build/dl_demo_tx: build/dl build/dl_demo
 	cd c/dl_demo/generate_tx && cargo run > ../../../build/tx.json
 
+build/rust:
+	cd rust && make build
+
 run-dl-demo: build/dl build/dl_demo build/dl_demo_tx
 	ckb-debugger --tx-file=build/tx.json -s lock --max-cycles 10000000000
 
 clean:
 	rm -rf build/*
+	rm -rf rust/target rust/build
